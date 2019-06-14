@@ -88,7 +88,7 @@ const buildSass = function () {
     .pipe(gulp.dest('./build/css'));
 }
 
-const build = gulp.parallel(buildSass)
+const build = gulp.parallel(buildBundle, buildSass);
 
 gulp.task('build', build);
 gulp.task('default', build);
