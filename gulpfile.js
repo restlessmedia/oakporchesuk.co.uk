@@ -82,4 +82,4 @@ const build = function () {
 }
 
 gulp.task('build', build);
-gulp.task('default', debug);
+gulp.task('default', build);
