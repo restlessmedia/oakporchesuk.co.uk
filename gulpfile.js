@@ -84,9 +84,9 @@ const build = function () {
 
 const buildSass = function () {
   gulp.task('sass', function () {
-    return gulp.src('./src/sass/**/*.scss')
+    return gulp.src('./src/scss/**/*.scss')
       .pipe(sass().on('error', sass.logError))
-      .pipe(gulp.dest('./css'));
+      .pipe(gulp.dest('./build/css'));
   });
 }
 
