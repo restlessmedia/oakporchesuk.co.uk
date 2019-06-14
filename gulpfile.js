@@ -76,19 +76,21 @@ function bundle(src, dest, options = {}) {
   return result;
 }
 
-const build = function () {
+const buildBundle = function () {
   return bundle('./src/index.js', './build/js', {
     release: true
   });
 }
 
 const buildSass = function () {
-  gulp.task('sass', function () {
+  return gulp.task('sass', function () {
     return gulp.src('./src/scss/**/*.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(gulp.dest('./build/css'));
   });
 }
+
+const build = gulp.parallel(buildBundle, buildSass)
 
 gulp.task('build', build);
 gulp.task('default', build);
