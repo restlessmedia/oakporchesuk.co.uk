@@ -1,0 +1,42 @@
+{
+  "name": "inferno-jest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "gulp build",
+    "build": "gulp build",
+    "gulp": "gulp",
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.4.3",
+    "inferno": "^7.1.7"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/preset-env": "^7.3.1",
+    "babel-plugin-inferno": "^6.0.4",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "gulp": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-jest": "^4.0.2",
+    "gulp-livereload": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "gulplog": "^1.0.0",
+    "inferno-test-utils": "^7.1.7",
+    "jest": "^24.1.0",
+    "jest-cli": "^24.1.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "watchify": "^3.11.1"
+  }
+}
