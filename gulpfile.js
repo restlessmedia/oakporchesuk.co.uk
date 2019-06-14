@@ -90,7 +90,7 @@ const buildSass = function () {
   });
 }
 
-const build = gulp.parallel(buildBundle)
+const build = gulp.parallel(buildSass)
 
 gulp.task('build', build);
 gulp.task('default', build);
