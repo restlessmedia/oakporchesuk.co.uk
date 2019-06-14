@@ -9,7 +9,7 @@
   "scripts": {
     "start": "gulp build",
     "build": "gulp build",
-    "gulp": "gulp",
+    "gulp": "gulp"
   },
   "author": "",
   "license": "ISC",
