@@ -83,11 +83,9 @@ const buildBundle = function () {
 }
 
 const buildSass = function () {
-  return gulp.task('sass', function () {
-    return gulp.src('./src/scss/**/*.scss')
-      .pipe(sass().on('error', sass.logError))
-      .pipe(gulp.dest('./build/css'));
-  });
+  return gulp.src('./src/scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./build/css'));
 }
 
 const build = gulp.parallel(buildSass)
