@@ -76,7 +76,7 @@ function bundle(src, dest, options = {}) {
 }
 
 const build = function () {
-  return bundle('./src/index.js', './jsbin/release', {
+  return bundle('./src/index.js', './build/js', {
     release: true
   });
 }
