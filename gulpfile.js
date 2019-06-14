@@ -12,7 +12,8 @@ var babelify = require('babelify'),
   sourceMaps = require('gulp-sourcemaps'),
   uglify = require('gulp-uglify'),
   log = require('gulplog'),
-  watchify = require('watchify');
+  watchify = require('watchify'),
+  sass = require('gulp-sass');
 
 // This method makes it easy to use common bundling options in different tasks
 function bundle(src, dest, options = {}) {
@@ -78,6 +79,14 @@ function bundle(src, dest, options = {}) {
 const build = function () {
   return bundle('./src/index.js', './build/js', {
     release: true
+  });
+}
+
+const buildSass = function () {
+  gulp.task('sass', function () {
+    return gulp.src('./src/sass/**/*.scss')
+      .pipe(sass().on('error', sass.logError))
+      .pipe(gulp.dest('./css'));
   });
 }
 
