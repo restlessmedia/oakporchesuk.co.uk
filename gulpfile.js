@@ -19,20 +19,16 @@ var babelify = require('babelify'),
 
 process.env.NODE_ENV = 'production';
 
-// This method makes it easy to use common bundling options in different tasks
-function bundle(src, dest, options = {}) {
-
+function bundle(src, dest) {
+  
+  console.log(process.env.NODE_ENV);
+  
   const task = function (bundler) {
     bundler.transform(babelify);
     
     bundler.transform(envify({
       NODE_ENV: process.env.NODE_ENV,
     }));
-    
-    // uglify if applicable
-    if (options.release === true) {
-      bundler = bundler.pipe(uglify());
-    }
     
     // babelify (uses babelrc config - not specified here inline)
     bundler = bundler
@@ -51,13 +47,20 @@ function bundle(src, dest, options = {}) {
       .pipe(rename('bundle.js'))
       .pipe(sourceMaps.init({ loadMaps: true }));
 
+    // uglify if applicable
+    if (process.env.NODE_ENV === 'production') {
+      console.log('Uglify');
+      bundler = bundler.pipe(uglify());
+    }
+    
     // Strip inline source maps
     bundler = bundler.pipe(sourceMaps.write('./'))
       // Save 'bundle'
       .pipe(gulp.dest(dest));
 
     // Reload browser if applicable
-    if (options.release !== true) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('Live reload')
       bundler = bundler.pipe(livereload());
     }
 
@@ -70,7 +73,7 @@ function bundle(src, dest, options = {}) {
   });
 
   // Watchify to watch source file changes if applicable
-  if (options.release !== true) {
+  if (process.env.NODE_ENV !== 'production') {
     bundler = bundler.plugin(watchify, { ignoreWatch: ['**/node_modules/**', '**/bower_components/**'] })
   }
 
@@ -87,9 +90,7 @@ function bundle(src, dest, options = {}) {
 }
 
 const buildBundle = function () {
-  return bundle('./src/index.js', './build/js', {
-    release: true
-  });
+  return bundle('./src/index.js', './build/js');
 }
 
 const buildSass = function () {
