@@ -13,7 +13,8 @@ var babelify = require('babelify'),
   uglify = require('gulp-uglify'),
   log = require('gulplog'),
   watchify = require('watchify'),
-  sass = require('gulp-sass');
+  sass = require('gulp-sass'),
+  imagemin = require('gulp-imagemin');
 
 // This method makes it easy to use common bundling options in different tasks
 function bundle(src, dest, options = {}) {
@@ -88,7 +89,13 @@ const buildSass = function () {
     .pipe(gulp.dest('./build/css'));
 }
 
-const build = gulp.parallel(buildBundle, buildSass);
+const compressImages = function () {
+  return gulp.src('src/images/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./build/images'));
+}
+
+const build = gulp.parallel(buildBundle, buildSass, compressImages);
 
 gulp.task('build', build);
 gulp.task('default', build);
