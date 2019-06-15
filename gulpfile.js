@@ -88,7 +88,13 @@ const buildSass = function () {
     .pipe(gulp.dest('./build/css'));
 }
 
-const build = gulp.parallel(buildBundle, buildSass);
+const compressImages = function () {
+  return gulp.src('src/images/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./build/images'));
+}
+
+const build = gulp.parallel(buildBundle, buildSass, compressImages);
 
 gulp.task('build', build);
 gulp.task('default', build);
