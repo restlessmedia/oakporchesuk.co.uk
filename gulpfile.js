@@ -14,7 +14,8 @@ var babelify = require('babelify'),
   log = require('gulplog'),
   watchify = require('watchify'),
   sass = require('gulp-sass'),
-  imagemin = require('gulp-imagemin');
+  imagemin = require('gulp-imagemin')
+  envify = require('envify/custom');
 
 process.env.NODE_ENV = 'production';
 
@@ -22,8 +23,12 @@ process.env.NODE_ENV = 'production';
 function bundle(src, dest, options = {}) {
 
   const task = function (bundler) {
+    bundler.transform(babelify);
+    bundler.transform(envify({
+      NODE_ENV: process.env.NODE_ENV,
+    }));
     // babelify (uses babelrc config - not specified here inline)
-    bundler = bundler.transform(babelify)
+    bundler = bundler
       // Start bundle
       .bundle()
       .on('error', function (err) {
