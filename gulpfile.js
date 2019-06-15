@@ -27,8 +27,10 @@ function bundle(src, dest) {
     bundler.transform(babelify);
     
     bundler.transform(envify({
-      NODE_ENV: process.env.NODE_ENV,
-    }));
+      NODE_ENV: process.env.NODE_ENV
+    }), {
+      global: true
+    });
     
     // babelify (uses babelrc config - not specified here inline)
     bundler = bundler
