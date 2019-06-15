@@ -24,15 +24,7 @@ function bundle(src, dest) {
   console.log(process.env.NODE_ENV);
   
   const task = function (bundler) {
-    bundler.transform(babelify);
     
-    bundler.transform(envify({
-      NODE_ENV: process.env.NODE_ENV
-    }), {
-      global: true
-    });
-    
-    // babelify (uses babelrc config - not specified here inline)
     bundler = bundler
       // Start bundle
       .bundle()
@@ -56,9 +48,10 @@ function bundle(src, dest) {
     }
     
     // Strip inline source maps
-    bundler = bundler.pipe(sourceMaps.write('./'))
-      // Save 'bundle'
-      .pipe(gulp.dest(dest));
+    bundler = bundler.pipe(sourceMaps.write('./'));
+    
+    // Save 'bundle'
+    bundler.pipe(gulp.dest(dest));
 
     // Reload browser if applicable
     if (process.env.NODE_ENV !== 'production') {
@@ -69,16 +62,24 @@ function bundle(src, dest) {
     return bundler;
   }
 
-  // create bundler - browserify entry point
-  let bundler = browserify(src, {
-    extensions: ['.js', '.jsx']
-  });
-
+  const options = {
+    extensions: ['.js', '.jsx'],
+    transform: [
+      ['envify', { NODE_ENV: 'production', global: true}],
+      // babelify (uses babelrc config - not specified here inline)
+      ['babelify'],
+    ],
+    plugins: [],
+  }
+  
   // Watchify to watch source file changes if applicable
   if (process.env.NODE_ENV !== 'production') {
-    bundler = bundler.plugin(watchify, { ignoreWatch: ['**/node_modules/**', '**/bower_components/**'] })
+    options.plugins.push(['watchify', { ignoreWatch: ['**/node_modules/**', '**/bower_components/**'] }]);
   }
-
+  
+  // create bundler - browserify entry point
+  let bundler = browserify(src, options);
+  
   // first pass
   const result = task(bundler);
 
