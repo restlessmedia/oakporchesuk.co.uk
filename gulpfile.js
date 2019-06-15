@@ -24,9 +24,16 @@ function bundle(src, dest, options = {}) {
 
   const task = function (bundler) {
     bundler.transform(babelify);
+    
     bundler.transform(envify({
       NODE_ENV: process.env.NODE_ENV,
     }));
+    
+    // uglify if applicable
+    if (options.release === true) {
+      bundler = bundler.pipe(uglify());
+    }
+    
     // babelify (uses babelrc config - not specified here inline)
     bundler = bundler
       // Start bundle
@@ -43,11 +50,6 @@ function bundle(src, dest, options = {}) {
       // Rename output
       .pipe(rename('bundle.js'))
       .pipe(sourceMaps.init({ loadMaps: true }));
-
-    // uglify if applicable
-    if (options.release === true) {
-      bundler = bundler.pipe(uglify());
-    }
 
     // Strip inline source maps
     bundler = bundler.pipe(sourceMaps.write('./'))
