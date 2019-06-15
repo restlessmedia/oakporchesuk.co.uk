@@ -39,6 +39,7 @@
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.11.1",
     "gulp-sass": "^4.0.2",
-    "gulp-imagemin": "^6.0.0"
+    "gulp-imagemin": "^6.0.0",
+    "envify": "^4.1.0"
   }
 }
