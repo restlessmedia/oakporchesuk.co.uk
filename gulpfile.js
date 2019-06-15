@@ -16,6 +16,8 @@ var babelify = require('babelify'),
   sass = require('gulp-sass'),
   imagemin = require('gulp-imagemin');
 
+process.env.NODE_ENV = 'production';
+
 // This method makes it easy to use common bundling options in different tasks
 function bundle(src, dest, options = {}) {
 
