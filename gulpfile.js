@@ -13,7 +13,8 @@ var babelify = require('babelify'),
   uglify = require('gulp-uglify'),
   log = require('gulplog'),
   watchify = require('watchify'),
-  sass = require('gulp-sass');
+  sass = require('gulp-sass'),
+  imagemin = require('gulp-imagemin');
 
 // This method makes it easy to use common bundling options in different tasks
 function bundle(src, dest, options = {}) {
