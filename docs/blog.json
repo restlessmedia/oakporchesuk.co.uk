@@ -1,1 +1,3 @@
-{}
+[
+  {title: 'This is the title', body: 'this is the body', date: '2020-01-25'}  
+]
