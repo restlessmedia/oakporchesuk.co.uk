@@ -1,4 +1,4 @@
 [
-  {"title": "This is the title", "body": "this is the body", date: "2020-01-25"},
-  {"title": "This is the title 2", "body": "this is the body 2", date: "2020-01-31"}
+  {"title": "This is the title", "body": "this is the body", "date": "2020-01-25"},
+  {"title": "This is the title 2", "body": "this is the body 2", "date": "2020-01-31"}
 ]
