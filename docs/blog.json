@@ -1,15 +1,6 @@
 [
   {
     "meta": {
-      "title": "How much does an oak framed garage cost?",
-      "description": "Take a closer look at choosing, and costing / budgeting for, your oak framed garage. Monarch Oak take you through it. Or Call 01435 408030."
-    },
-    "title": "How much does an oak framed garage cost?",
-    "date": "2020-09-10",
-    "markdownFile": "blog-2020-09-10.md"
-  },
-  {
-    "meta": {
       "title": "4 Oak Framed Buildings to Enhance your Home - Monarch Oak South East",
       "description": "With such a versatile material like Oak we can build pretty much anything, take a look at our top 4 buildings to enhance your home and living space. Call 01435 408030."
     },
@@ -56,5 +47,14 @@
     "title": "A new oak gazebo for the summer? Yes, please!",
     "date": "2020-03-01",
     "markdownFile": "blog-2020-03-01.md"
+  },
+  {
+    "meta": {
+      "title": "How much does an oak framed garage cost?",
+      "description": "Take a closer look at choosing, and costing / budgeting for, your oak framed garage. Monarch Oak take you through it. Or Call 01435 408030."
+    },
+    "title": "How much does an oak framed garage cost?",
+    "date": "2020-09-10",
+    "markdownFile": "blog-2020-09-10.md"
   }
 ]
