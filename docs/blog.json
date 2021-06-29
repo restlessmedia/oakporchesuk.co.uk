@@ -169,4 +169,14 @@
     "date": "2021-05-29",
     "markdownFile": "blog-2021-05-29.md"
   }
+   ,
+  {
+    "meta": {
+      "title": "What you need to know before you build with an oak frame.",
+      "description": "If you’re still not sure oak is for you, keep reading. We have all the insider info you need about building with an oak frame."
+    },
+    "title": "What you need to know before you build with an oak frame.",
+    "date": "2021-06-29",
+    "markdownFile": "blog-2021-06-29.md"
+  }
 ]
